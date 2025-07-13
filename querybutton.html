@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Report Broken Link</title>
+  <style>
+    body {
+      margin: 0; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100px;
+      font-family: Arial, sans-serif;
+      background: transparent;
+    }
+    button {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    button:active {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <button id="reportBtn">Link Not Working? Click Here</button>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxNAjOjf-Ds0UA_sqDRhdd25_Zx4UVJylOC9KfO6NqZJUnk4qNbxonkC1qDKftsjDvi/exec';
+
+    document.getElementById('reportBtn').addEventListener('click', () => {
+      fetch(`${scriptURL}?url=${encodeURIComponent(window.parent.location.href)}&message=User reported broken link`)
+        .then(response => {
+          if(response.ok) {
+            alert('Thank you for letting us know. We will rectify it.\n\nKindly join our Telegram channel: https://t.me/tamildoods');
+          } else {
+            alert('Oops, something went wrong. Please try again later.');
+          }
+        })
+        .catch(() => {
+          alert('Oops, something went wrong. Please try again later.');
+        });
+    });
+  </script>
+</body>
+</html>
