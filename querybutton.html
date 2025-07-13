@@ -31,20 +31,14 @@
 </head>
 <body>
 
-  <!-- ✅ BUTTON -->
   <button id="reportBtn">Link Not Working? Click Here</button>
 
-  <!-- ✅ SCRIPT GOES BELOW BUTTON -->
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwqgF6Kwr02WJmhaqGgmiioyArpbUrmwdZEyOU75-0ShRmZRNqbPvEUVbDp45bWKzFS/exec';
 
-    // Get parent page URL (if allowed)
+    // Return the current page URL (the iframe page itself)
     function getSafeURL() {
-      try {
-        return window.top.location.href;
-      } catch (e) {
-        return 'Blocked by browser';
-      }
+      return window.location.href;
     }
 
     document.getElementById('reportBtn').addEventListener('click', () => {
